@@ -60,6 +60,9 @@ class Character:
     def updateLivingStatus(self):
         self.isAlive = False
 
+    def updateCharacter(self):
+        self.updateExperiencePoints()
+
     def updateExperiencePoints(self):
         currentExperiencePoints = self.experiencePoints
         self.experiencePoints += 10
@@ -74,5 +77,8 @@ class Character:
         self.level += 1
         self.updateHitPoints(5 + self.getConstitutionModifier())
 
-    def updateCharacter(self):
-        self.updateExperiencePoints()
+    def getModifiedArmor(self):
+        return self.armor + self.getDexterityModifier()
+
+    def calculateStrengthModifier(self, initialRoll):
+        return 2 * self.getStrengthModifier() if initialRoll == 20 else self.getStrengthModifier()

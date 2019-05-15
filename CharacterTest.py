@@ -1,6 +1,7 @@
 import unittest
 from Character import Character
 from Attack import Attack
+from Roll import Roll
 
 
 class CharacterTest(unittest.TestCase):
@@ -143,8 +144,9 @@ class CharacterTest(unittest.TestCase):
         testCharacter1.levelUp()
         testCharacter1.levelUp()
         roll = 1
-        attack = Attack(testCharacter1, testCharacter2, roll)
 
-        attack.modifyRoll()
+        modifiedRoll = Roll(testCharacter1, testCharacter2, roll)
 
-        self.assertEqual(2, attack.modifiedRoll)
+        modifiedRoll.modifyRoll()
+
+        self.assertEqual(2, modifiedRoll.modifiedRoll)
