@@ -2,6 +2,7 @@ import unittest
 from Character import Character
 from Attack import Attack
 from Fighter import Fighter
+from Roll import Roll
 
 
 class FighterTest(unittest.TestCase):
@@ -11,19 +12,19 @@ class FighterTest(unittest.TestCase):
         testCharacter2 = Character()
         testCharacter1.levelUp()
         testCharacter1.levelUp()
-        roll = 1
-        attack = Attack(testCharacter1, testCharacter2, roll)
+        roll = Roll(testCharacter1, testCharacter2, 1)
 
-        attack.modifyRoll()
+        roll.modifyRoll()
 
-        self.assertEqual(3, attack.modifiedRoll)
+        self.assertEqual(3, roll.modifiedRoll)
 
     def test_fighterGainsTenHPPerLevel(self):
         testCharacter1 = Fighter()
         testCharacter2 = Character()
         testCharacter1.experiencePoints = 990
-        roll = testCharacter2.armor
-        attack = Attack(testCharacter1, testCharacter2, roll)
+        roll = Roll(testCharacter1, testCharacter2, testCharacter2.armor)
+
+        attack = Attack(testCharacter1, testCharacter2, roll.initialRoll)
 
         attack.attemptAttack()
 

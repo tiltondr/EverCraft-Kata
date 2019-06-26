@@ -24,7 +24,9 @@ class Roll:
         #TODO Clean This Up
         if self.modifiedRoll >= self.defender.getModifiedArmor() and self.defender.isAlive and not isinstance(self.attacker, Rogue):
             return True
-        elif self.modifiedRoll >= self.defender.armor and self.defender.isAlive:
+        elif self.modifiedRoll >= self.defender.armor and self.defender.isAlive and isinstance(self.attacker, Rogue) and (self.defender.getModifiedArmor() > self.defender.armor):
+            return True
+        elif self.modifiedRoll >= self.defender.getModifiedArmor() and self.defender.isAlive and isinstance(self.attacker, Rogue) and (self.defender.getModifiedArmor() <= self.defender.armor):
             return True
         else:
             return False
