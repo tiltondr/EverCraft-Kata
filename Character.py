@@ -32,6 +32,7 @@ class Character:
         self.strength = 10
         self.dexterity = 10
         self.constitution = 10
+        self.wisdom = 10
         self.experiencePoints = 0
         self.level = 1
 
@@ -43,6 +44,9 @@ class Character:
 
     def getConstitutionModifier(self):
         return self.abilityMods[self.constitution]
+
+    def getWisdomModifier(self):
+        return self.abilityMods[self.wisdom]    
 
     def getRollModifier(self):
         return self.getStrengthModifier() + floor(self.level / 2)
