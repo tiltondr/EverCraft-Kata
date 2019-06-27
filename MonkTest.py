@@ -53,3 +53,38 @@ class MonkTest(unittest.TestCase):
         attack.attemptAttack()
 
         self.assertEqual(4, testCharacter2.hitPoints)
+
+    def test_attackRollIncreasedBy1Every2ndLevel(self):
+        testCharacter1 = Monk()
+        testCharacter2 = Character()
+        testCharacter1.level = 2
+        roll = Roll(testCharacter1, testCharacter2, testCharacter2.armor-1)
+
+        attack = Attack(testCharacter1, testCharacter2, roll.initialRoll)
+
+        attack.attemptAttack()
+
+        self.assertEqual(2, testCharacter2.hitPoints)
+
+    def test_attackRollIncreasedBy1Every3rdLevel(self):
+        testCharacter1 = Monk()
+        testCharacter2 = Character()
+        testCharacter1.level = 3
+        roll = Roll(testCharacter1, testCharacter2, testCharacter2.armor-1)
+
+        attack = Attack(testCharacter1, testCharacter2, roll.initialRoll)
+
+        attack.attemptAttack()
+
+        self.assertEqual(2, testCharacter2.hitPoints)
+
+    def test_attackRollNotIncreasedIfNot2ndOr3rdLevel(self):
+        testCharacter1 = Monk()
+        testCharacter2 = Character()
+        roll = Roll(testCharacter1, testCharacter2, testCharacter2.armor-1)
+
+        attack = Attack(testCharacter1, testCharacter2, roll.initialRoll)
+
+        attack.attemptAttack()
+
+        self.assertEqual(5, testCharacter2.hitPoints)
