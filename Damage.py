@@ -1,4 +1,5 @@
 from Rogue import Rogue
+from Monk import Monk
 
 class Damage:
 
@@ -25,6 +26,8 @@ class Damage:
             return 2 * self.calculateStandardDamage()
 
     def calculateStandardDamage(self):
+        if isinstance(self.attacker, Monk):
+            return 3 + self.attacker.calculateStrengthModifier(self.initialRoll)
         return 1 + self.attacker.calculateStrengthModifier(self.initialRoll)
 
     def dealDamage(self, damage):

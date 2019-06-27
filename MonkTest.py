@@ -18,3 +18,14 @@ class MonkTest(unittest.TestCase):
         attack.attemptAttack()
 
         self.assertEqual(11, testCharacter1.hitPoints)
+
+    def test_does3DmgInsteadOf1OnSuccessfulAttack(self):
+        testCharacter1 = Monk()
+        testCharacter2 = Character()
+        roll = Roll(testCharacter1, testCharacter2, testCharacter2.armor)
+
+        attack = Attack(testCharacter1, testCharacter2, roll.initialRoll)
+
+        attack.attemptAttack()
+
+        self.assertEqual(2, testCharacter2.hitPoints)
